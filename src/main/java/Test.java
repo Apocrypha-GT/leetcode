@@ -31,19 +31,27 @@ public class Test {
     }
 
     public static void main(String[] args) {
-//        boolean palindrome = isPalindrome(121);
-//        int abcabcbb = lengthOfLongestSubstring(" ");
-//        boolean valid = isValid(")");
-        TreeNode ll = new TreeNode(11);
+        /*boolean palindrome = isPalindrome(121);
+        int abcabcbb = lengthOfLongestSubstring(" ");
+        boolean valid = isValid(")");*/
+        /*TreeNode ll = new TreeNode(11);
         TreeNode left = new TreeNode(4, ll, null);
         TreeNode rl = new TreeNode(13);
         TreeNode rr = new TreeNode(6);
         TreeNode right = new TreeNode(8, rl, rr);
         TreeNode root = new TreeNode(5, left, right);
-        pathSum(root, 19);
+        pathSum(root, 19);*/
+        teest();
         System.out.println("----------------------over----------------------");
     }
 
+    public static void teest(){
+        Integer t = null;
+        int m = t;
+        System.out.println(t);
+    }
+
+    //是否回文
     public static boolean isPalindrome(int x) {
         //转数组
         /*char[] test = String.valueOf(x).toCharArray();
@@ -78,7 +86,7 @@ public class Test {
 
     }
 
-    //回文
+    //最长回文数
     public static int lengthOfLongestSubstring(String s) {
         //记录每个字符最后一次出现的位置索引
         int[] last = new int[128];
@@ -119,7 +127,9 @@ public class Test {
     }
 
     public static void find(TreeNode node, int target, List<Integer> list, List<List<Integer>> result) {
-        if (node == null) return;
+        if (node == null) {
+            return;
+        }
         target -= node.val;
         list.add(node.val);
         if (node.left == null && node.right == null && target == 0) {
