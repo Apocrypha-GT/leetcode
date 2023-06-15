@@ -1,4 +1,4 @@
-package main.java;
+package main.java.leetcode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,13 +45,15 @@ public class Test {
         System.out.println("----------------------over----------------------");
     }
 
-    public static void teest(){
+    public static void teest() {
         Integer t = null;
         int m = t;
         System.out.println(t);
     }
 
-    //是否回文
+    /**
+     * 是否回文
+     */
     public static boolean isPalindrome(int x) {
         //转数组
         /*char[] test = String.valueOf(x).toCharArray();
@@ -86,7 +88,9 @@ public class Test {
 
     }
 
-    //最长回文数
+    /**
+     * 最长回文数
+     */
     public static int lengthOfLongestSubstring(String s) {
         //记录每个字符最后一次出现的位置索引
         int[] last = new int[128];
@@ -107,7 +111,9 @@ public class Test {
         return len;
     }
 
-    //有效括号
+    /**
+     * 有效括号
+     */
     public static boolean isValid(String s) {
         Stack<Character> stack = new Stack<Character>();
         for (char c : s.toCharArray()) {
@@ -119,7 +125,9 @@ public class Test {
         return stack.isEmpty();
     }
 
-    //二叉树和
+    /**
+     * 二叉树和
+     */
     public static List<List<Integer>> pathSum(TreeNode root, int target) {
         List<List<Integer>> result = new ArrayList<>();
         find(root, target, new ArrayList<>(), result);
@@ -139,6 +147,33 @@ public class Test {
             find(node.right, target, list, result);
         }
         list.remove(list.size() - 1);
+    }
+
+    /**
+     * N字形变换
+     */
+    public static String convert(String s, int numRows) {
+        //魔法值，即意义不明的常量值，阿里规约规定要避免使用魔法值，可预先定义一个public static final常量用常量名解释值的含义
+        if (numRows < 2) {
+            return s;
+        }
+        List<StringBuilder> rows = new ArrayList<StringBuilder>();
+        for (int i = 0; i < numRows; i++) {
+            rows.add(new StringBuilder());
+        }
+        int i = 0, flag = -1;
+        for (char c : s.toCharArray()) {
+            rows.get(i).append(c);
+            if (i == 0 || i == numRows - 1) {
+                flag = -flag;
+            }
+            i += flag;
+        }
+        StringBuilder res = new StringBuilder();
+        for (StringBuilder row : rows) {
+            res.append(row);
+        }
+        return res.toString();
     }
 
 }
