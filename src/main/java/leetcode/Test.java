@@ -115,12 +115,17 @@ public class Test {
      * 有效括号
      */
     public static boolean isValid(String s) {
-        Stack<Character> stack = new Stack<Character>();
+        Stack<Character> stack = new Stack<>();
         for (char c : s.toCharArray()) {
-            if (c == '(') stack.push(')');
-            else if (c == '[') stack.push(']');
-            else if (c == '{') stack.push('}');
-            else if (stack.isEmpty() || c != stack.pop()) return false;
+            if (c == '(') {
+                stack.push(')');
+            } else if (c == '[') {
+                stack.push(']');
+            } else if (c == '{') {
+                stack.push('}');
+            } else if (stack.isEmpty() || c != stack.pop()) {
+                return false;
+            }
         }
         return stack.isEmpty();
     }
@@ -157,7 +162,7 @@ public class Test {
         if (numRows < 2) {
             return s;
         }
-        List<StringBuilder> rows = new ArrayList<StringBuilder>();
+        List<StringBuilder> rows = new ArrayList<>();
         for (int i = 0; i < numRows; i++) {
             rows.add(new StringBuilder());
         }
